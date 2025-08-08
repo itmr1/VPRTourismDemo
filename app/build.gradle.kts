@@ -19,7 +19,7 @@ android {
                 cppFlags += "-std=c++17"
                 arguments += listOf(
                     "-DOpenCV_DIR=/Users/ti1e24/Documents/OpenCV-android-sdk/sdk/native/jni",
-                    "DANDROID_STL=c++_shared"
+                    "-DANDROID_STL=c++_shared"
                 )
             }
         }

@@ -4,28 +4,53 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.util.Log;
+import android.widget.Toast;
+import org.opencv.android.OpenCVLoader;
 
 import com.example.vprdemo1.databinding.ActivityMainBinding;
 
+
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "OCV";
 
     // Used to load the 'vprdemo1' library on application startup.
     static {
         System.loadLibrary("vprdemo1");
     }
 
-    private ActivityMainBinding binding;
+    public native String cvVersion();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+//    private ActivityMainBinding binding;
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//        binding = ActivityMainBinding.inflate(getLayoutInflater());
+//        setContentView(binding.getRoot());
+//
+//        // Example of a call to a native method
+//        TextView tv = binding.sampleText;
+//        tv.setText(stringFromJNI());
+//    }
+
+    @Override protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        if (OpenCVLoader.initLocal()){
+            Log.i(TAG, "OpenCV loaded");
+        }
+        else{
+            Log.e(TAG, "OpenCV init failed");
+            Toast.makeText(this, "OpenCV init failed", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
 
-        // Example of a call to a native method
-        TextView tv = binding.sampleText;
-        tv.setText(stringFromJNI());
+        setContentView(R.layout.activity_main);
+        TextView tv = findViewById(R.id.sample_text);
+        tv.setText("OpenCV: " + cvVersion());
     }
 
     /**
