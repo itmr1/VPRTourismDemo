@@ -1,0 +1,17 @@
+{
+  "installationFolder": "/Users/ti1e24/AndroidStudioProjects/VPRdemo1/opencv/build/intermediates/prefab_package/release/prefab",
+  "gradlePath": ":opencv",
+  "packageInfo": {
+    "packageName": "opencv",
+    "packageSchemaVersion": 2,
+    "packageDependencies": [],
+    "modules": [
+      {
+        "moduleName": "opencv_jni_shared",
+        "moduleHeaders": "/Users/ti1e24/AndroidStudioProjects/VPRdemo1/opencv/native/jni/include",
+        "moduleExportLibraries": [],
+        "abis": []
+      }
+    ]
+  }
+}

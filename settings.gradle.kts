@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "VPRdemo1"
 include(":app")
+include(":opencv")
